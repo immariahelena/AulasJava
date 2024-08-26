@@ -1,0 +1,48 @@
+let Livro = {
+
+    titulo: "JavaScript para Iniciantes",
+    autor: "João Silva",
+    anoPublicacao: 2021,
+    numeroPaginas: 350,
+    paginasLidas: 120,
+
+    exibirDetalhes: function() {
+        console.log(`Título: ${this.titulo}, Autor: ${this.autor}, Ano de Publicação: ${this.anoPublicacao}, Páginas: ${this.numeroPaginas}`);
+    },
+
+    calcularProgresso: function() {
+        let progresso = (this.paginasLidas / this.numeroPaginas) * 100;
+        return progresso.toFixed(2);
+    },
+
+    marcarPaginaLida: function(paginas) {
+        this.paginasLidas += paginas;
+        if (this.paginasLidas > this.numeroPaginas) {
+            this.paginasLidas = this.numeroPaginas;
+        }
+        console.log(`Você leu mais ${paginas} páginas. Total de páginas lidas: ${this.paginasLidas}`);
+    },
+
+    verificarConclusao: function() {
+        if (this.paginasLidas === this.numeroPaginas) {
+            console.log("Você concluiu a leitura do livro.");
+        } else {
+            console.log("Ainda restam páginas para ler.");
+        }
+    },
+
+    reiniciarLeitura: function() {
+        this.paginasLidas = 0;
+        console.log("A leitura foi reiniciada. Páginas lidas: 0");
+    }
+};
+
+Livro.exibirDetalhes();
+
+console.log(`Progresso de leitura: ${Livro.calcularProgresso()}%`);
+
+Livro.marcarPaginaLida(50);
+
+Livro.verificarConclusao();
+
+Livro.reiniciarLeitura();
